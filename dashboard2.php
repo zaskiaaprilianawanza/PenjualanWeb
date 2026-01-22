@@ -124,13 +124,18 @@ if (!isset($_SESSION['email'])) {
 
 <div class="content">
     <?php
-    $page = $_GET['page'] ?? 'home';
-    $file = "pages/" . basename($page) . ".php";
+    $page = isset($_GET['page']) ? $_GET['page'] : '';
 
-    if (file_exists($file)) {
-        include $file;
+    if ($page == 'tambah') {
+    include 'pages/tambah.php';
+    } elseif ($page == 'list_produk') {
+    include 'pages/list_produk.php';
+    } elseif ($page == 'edit') {
+    include 'pages/edit.php';
+    } elseif ($page == 'hapus') {
+    include 'pages/hapus.php';
     } else {
-        echo "<h2>Welcome Dashboard</h2>";
+    echo "<h3>Selamat datang di Dashboard</h3>";
     }
     ?>
 </div>
